@@ -16,6 +16,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
     public ErrorResponse handleProductNotFoundException(AppRuntimeException ex) {
+        log(ex);
         return new ErrorResponse(ErrorCode.RESOURCE_NOT_FOUND, ex.getMessage());
     }
 
@@ -32,5 +33,9 @@ public class GlobalExceptionHandler {
     public ErrorResponse handleException(Exception ex) {
         LOGGER.error("error while serving request: ",ex);
         return new ErrorResponse(ErrorCode.INTERNAL_SERVER_ERROR, "An unexpected error occurred");
+    }
+
+    private void log(Throwable th){
+        LOGGER.error("error while serving request: ", th);
     }
 }

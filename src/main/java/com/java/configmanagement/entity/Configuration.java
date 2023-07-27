@@ -8,29 +8,23 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "profiles")
-public class Profile {
+@Table(name = "configuration")
+public class Configuration {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
+    private String content;
     private String version;
-    private String name;
-    private String status;
-    @ManyToOne
-    @JoinColumn(name = "application_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "config_id", unique = true)
     @JsonBackReference
-    private Application application;
-    //    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "config_id", unique = true)
-    @OneToOne(mappedBy = "profile")
-    private Configuration configuration;
+    private Profile profile;
 }
 

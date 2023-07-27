@@ -16,7 +16,7 @@ import java.util.List;
 public class ProfileController {
     private IProfileService iProfileService;
 
-    @PostMapping("/{applicationId}/profiles")
+    @PostMapping("/{applicationId}")
     public ResponseEntity<Profile> createProfile(@RequestBody Profile profile, @PathVariable String applicationId) {
         Profile serviceProfile = iProfileService.createProfile(profile,applicationId);
         ResponseEntity<Profile> productResponseEntity = null;
