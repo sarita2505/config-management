@@ -10,4 +10,5 @@ public class ConfigManagementApplication {
 		SpringApplication.run(ConfigManagementApplication.class, args);
 	}
 
+
 }
