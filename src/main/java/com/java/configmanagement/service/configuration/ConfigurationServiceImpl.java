@@ -76,8 +76,15 @@ public class ConfigurationServiceImpl implements IConfigurationService {
     @Override
     public void deleteConfiguration(String id) {
         try {
+            Configuration configuration = configRepository.findById(id).get();
+            configuration.setProfile(null);
+            configRepository.save(configuration);
+
             configRepository.deleteById(id);
+
+            System.out.println("deleted");
         } catch (Exception e) {
+            e.printStackTrace();
             throw new AppRuntimeException(e.getMessage());
         }
     }

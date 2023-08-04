@@ -22,7 +22,8 @@ public class Configuration {
     private String id;
     private String content;
     private String version;
-    @OneToOne(cascade = CascadeType.ALL)
+//    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "config_id", unique = true)
     @JsonBackReference
     private Profile profile;

@@ -30,7 +30,7 @@ public class Profile {
     private Application application;
     //    @OneToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "config_id", unique = true)
-    @OneToOne(mappedBy = "profile")
+    @OneToOne(mappedBy = "profile",cascade = CascadeType.ALL)
     private Configuration configuration;
 }
 
